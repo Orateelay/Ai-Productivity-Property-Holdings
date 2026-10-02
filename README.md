@@ -4,6 +4,8 @@ A modern SaaS-style AI productivity dashboard designed for a South African const
 
 The platform combines several AI-powered tools into one simple workspace, helping with construction estimates, client communication, task planning, research, and architect selection.
 
+Author: Oratile Lithuge
+
 ## Features
 
 ### 🏗️ Cost Estimator
