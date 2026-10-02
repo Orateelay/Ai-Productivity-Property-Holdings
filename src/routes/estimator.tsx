@@ -71,7 +71,9 @@ function Estimator() {
   const e = f.formState.errors;
 
   const onSubmit = async (v: Form) => {
-    const r = await ai.run({ ...v, location: `${v.city}, ${v.province}, South Africa` });
+    const { classrooms, bedrooms, bathrooms, ...rest } = v;
+    const sizing = v.type === "House" ? { bedrooms, bathrooms } : { classrooms };
+    const r = await ai.run({ ...rest, ...sizing, location: `${v.city}, ${v.province}, South Africa` });
     if (r) logActivity(`Estimate generated for ${v.type.toLowerCase()} in ${v.city}`, "Cost Estimator");
   };
 
