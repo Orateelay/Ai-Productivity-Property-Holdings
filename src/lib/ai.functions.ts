@@ -48,7 +48,7 @@ export const runAi = createServerFn({ method: "POST" })
     });
     if (res.status === 429) return { ok: false as const, error: "AI is busy right now. Please retry shortly." };
     if (res.status === 402) return { ok: false as const, error: "AI credits are exhausted." };
-    if (!res.ok) return { ok: false as const, error: "The AI service returned an error." };
+    if (!res.ok) { console.error("AI error", res.status, await res.text()); return { ok: false as const, error: "The AI service returned an error." }; }
     const json = await res.json();
     const text: string =
       json.output_text ??
