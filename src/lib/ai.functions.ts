@@ -42,7 +42,7 @@ export const runAi = createServerFn({ method: "POST" })
       body: JSON.stringify({
         model: "openai/gpt-6-astra",
         instructions: PROMPTS[data.mode],
-        input: JSON.stringify(data.payload),
+        input: "Return JSON for this request: " + JSON.stringify(data.payload),
         text: { format: { type: "json_object" } },
       }),
     });
